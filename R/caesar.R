@@ -1,5 +1,7 @@
 #' Encrypt or decrypt a Caesar Cipher
 #'
+#' @export
+#'
 #' @description This can be used to create (encrypt) and solve (decrypt) a
 #'   Caesar cipher. The function does not differentiate between the two.
 #'
