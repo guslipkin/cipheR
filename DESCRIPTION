@@ -1,0 +1,15 @@
+Package: cipheR
+Title: Encryption and decryption with Ciphers
+Version: 0.0.0.9000
+Authors@R: 
+    person("Gus", "Lipkin", , "gus.lipkin@gmail.com", role = c("aut", "cre"))
+Description: This is nothing more than a function to aid in creating and solving 
+  Caesar Shifts. It allows users to choose both number of positions shifted by, 
+  as well as the character set used for shifting.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
