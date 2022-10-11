@@ -30,8 +30,11 @@
 #' @returns A character vector of length one that has been shifted.
 caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL) {
 
+  # Catching errors
   if (length(x) == 0) {
     stop("Please provide a vector of length greater than zero to shift.")
+  } else if (!is.atomic(x) | !(is.character(x) | is.numeric(x))) {
+    stop("x must be a numeric or character vector.")
   }
 
   if (!is.null(dict) & !is.null(preset)) {
@@ -47,12 +50,12 @@ caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
     x <- as.character(x)
   }
 
-  if (length(x) == 1) {
-    x <- unlist(strsplit(x, ""))
-  }
+  x <- strsplit(x, "")
+  unlistX <- unlist(x)
 
+  # Set the dictionary as needed
   if (is.null(dict) & is.null(preset)) {
-    dict <- sort(unique(x))
+    dict <- sort(unique(unlistX))
   } else if (!is.null(preset)) {
     if (preset == "alphanumeric") {
       dict <- rawToChar(as.raw(c(48:57, 65:90, 97:122)))
@@ -73,30 +76,37 @@ caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
     dict <- unlist(strsplit(dict, ""))
   }
 
-  if (!all(x %in% dict)) {
+  if (!all(unlistX %in% dict)) {
     stop("Not all values of x are in the character set. Please choose a different character set.")
   }
 
-  if (preserve_spaces) {
-    isSpace <- which(dict == " ")
-    if (length(isSpace > 0)) {
-      dict <- dict[-which(dict == " ")]
-    }
-  }
-
+  # We need to preserve spaces as requested
   x <-
-    sapply(x, function(y) {
-      if (preserve_spaces & y == " ") {
-        return(" ")
+    lapply(x, function(x) {
+      if (preserve_spaces) {
+        isSpace <- which(dict == " ")
+        if (length(isSpace > 0)) {
+          dict <- dict[-which(dict == " ")]
+        }
       }
-      hop <- which(y == dict) + n
-      hop <- hop %% length(dict)
-      if (hop == 0) {
-        hop <- length(dict)
-      }
-      return(dict[hop])
+
+      # Do the shifting
+      x <-
+        sapply(x, function(y) {
+          if (preserve_spaces & y == " ") {
+            return(" ")
+          }
+          hop <- which(y == dict) + n
+          hop <- hop %% length(dict)
+          if (hop == 0) {
+            hop <- length(dict)
+          }
+          return(dict[hop])
+        })
+      x <- paste0(x, collapse = "")
     })
-  x <- paste0(x, collapse = "")
+
+  x <- unlist(x, recursive = FALSE)
 
   return(x)
 }

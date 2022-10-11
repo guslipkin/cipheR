@@ -16,6 +16,10 @@ test_that("Spaces are not preserved", {
   expect_equal(caesar("a b c", 1, preserve_spaces = FALSE), "baca ")
 })
 
+test_that("Vector length is preserved", {
+  expect_equal(caesar(c("a", "b", "c"), 1), c("b", "c", "a"))
+})
+
 test_that("When no dictionary is provided, x is used", {
   expect_equal(caesar("abcde", 1), "bcdea")
 })
@@ -50,3 +54,10 @@ test_that("dict must contain all values in x", {
 test_that("x cannot be empty", {
   expect_error(caesar(c(), 1))
 })
+test_that("x must be a vector", {
+  expect_error(caesar(list("abc"), 1))
+})
+test_that("x must be a character or numeric vector", {
+  expect_error(caesar(c(TRUE), 1))
+})
+
