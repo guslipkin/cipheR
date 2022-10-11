@@ -46,3 +46,7 @@ test_that("A typo in the preset gives an error", {
 test_that("dict must contain all values in x", {
   expect_error(caesar("abc", 1, dict = "def"))
 })
+
+test_that("x cannot be empty", {
+  expect_error(caesar(c(), 1))
+})

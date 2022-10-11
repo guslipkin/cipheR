@@ -4,14 +4,14 @@
 #'   Caesar cipher. The function does not differentiate between the two.
 #'
 #' @param x A vector to be shifted
-#' @param n (Default: 1) The number of places to shift by. This can be either
+#' @param n (Default: `1`) The number of places to shift by. This can be either
 #'   positive or negative. Zero returns x as it was given to the function.
-#' @param preserve_spaces (Default: TRUE) A boolean describing if spaces should
+#' @param preserve_spaces (Default: `TRUE`) A boolean describing if spaces should
 #'   be preserved. This is helpful when working with sentences.
 #' @param dict The dictionary used for shifting. This defaults to NULL in which
 #'   case a dictionary is built from the sorted unique values of x.
 #' @param preset A pre-made dictionary using ASCII codes from
-#'   \url{://www.ascii-code.com/}. Note that `delete` is excluded as a
+#'   \url{https://www.ascii-code.com/}. Note that `delete` is excluded as a
 #'   character.
 #'   * `NULL` (the default)
 #'   * `"alphanumeric"`: ASCII characters 48:57, 65:90, and 97:122. Numbers 0-9
@@ -27,6 +27,10 @@
 #'
 #' @returns A character vector of length one that has been shifted.
 caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL) {
+
+  if (length(x) == 0) {
+    stop("Please provide a vector of length greater than zero to shift.")
+  }
 
   if (!is.null(dict) & !is.null(preset)) {
     warning("Both a dict and a preset was provided, only the dict will be used.")

@@ -9,17 +9,17 @@ caesar(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
 \arguments{
 \item{x}{A vector to be shifted}
 
-\item{n}{(Default: 1) The number of places to shift by. This can be either
+\item{n}{(Default: \code{1}) The number of places to shift by. This can be either
 positive or negative. Zero returns x as it was given to the function.}
 
-\item{preserve_spaces}{(Default: TRUE) A boolean describing if spaces should
+\item{preserve_spaces}{(Default: \code{TRUE}) A boolean describing if spaces should
 be preserved. This is helpful when working with sentences.}
 
 \item{dict}{The dictionary used for shifting. This defaults to NULL in which
 case a dictionary is built from the sorted unique values of x.}
 
 \item{preset}{A pre-made dictionary using ASCII codes from
-\url{://www.ascii-code.com/}. Note that \code{delete} is excluded as a
+\url{https://www.ascii-code.com/}. Note that \code{delete} is excluded as a
 character.
 \itemize{
 \item \code{NULL} (the default)
