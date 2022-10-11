@@ -13,9 +13,15 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/atbash.html</loc>
+  </url>
+  <url>
     <loc>/reference/caesar.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/railfence.html</loc>
   </url>
 </urlset>

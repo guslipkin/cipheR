@@ -3,9 +3,8 @@ Title: Encryption and decryption with Ciphers
 Version: 0.0.0.9000
 Authors@R: 
     person("Gus", "Lipkin", , "gus.lipkin@gmail.com", role = c("aut", "cre"))
-Description: This is nothing more than a function to aid in creating and solving 
-  Caesar Shifts. It allows users to choose both number of positions shifted by, 
-  as well as the character set used for shifting.
+Description: This package encrypts and decrypts using basic ciphers. None of 
+  these should be used in place of real encryption using state of the art tools.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
