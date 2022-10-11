@@ -80,9 +80,9 @@ caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
     stop("Not all values of x are in the character set. Please choose a different character set.")
   }
 
-  # We need to preserve spaces as requested
   x <-
-    lapply(x, function(x) {
+    lapply(x, function(y) {
+      # We need to preserve spaces as requested
       if (preserve_spaces) {
         isSpace <- which(dict == " ")
         if (length(isSpace > 0)) {
@@ -91,19 +91,20 @@ caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
       }
 
       # Do the shifting
-      x <-
-        sapply(x, function(y) {
-          if (preserve_spaces & y == " ") {
+      y <-
+        sapply(y, function(z) {
+          if (preserve_spaces & z == " ") {
             return(" ")
           }
-          hop <- which(y == dict) + n
+          hop <- which(z == dict) + n
           hop <- hop %% length(dict)
           if (hop == 0) {
             hop <- length(dict)
           }
           return(dict[hop])
         })
-      x <- paste0(x, collapse = "")
+      y <- paste0(y, collapse = "")
+      return(y)
     })
 
   x <- unlist(x, recursive = FALSE)
