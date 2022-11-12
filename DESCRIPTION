@@ -1,6 +1,6 @@
 Package: cipheR
 Title: Encryption and decryption with Ciphers
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person("Gus", "Lipkin", , "gus.lipkin@gmail.com", role = c("aut", "cre"))
 Description: This package encrypts and decrypts using basic ciphers. None of 

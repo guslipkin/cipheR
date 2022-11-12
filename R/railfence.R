@@ -38,6 +38,7 @@ railfence <- function(x, n = 1, decrypt = FALSE) {
   return(x)
 }
 
+#' @keywords internal
 .railfence_encrypt <- function(x, n) {
   x <- strsplit(x, "")
 
@@ -55,6 +56,7 @@ railfence <- function(x, n = 1, decrypt = FALSE) {
   return(x)
 }
 
+#' @keywords internal
 .railfence_decrypt <- function(x, n) {
   x <-
     lapply(x, function(s) {

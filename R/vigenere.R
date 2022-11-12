@@ -53,6 +53,7 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
   return(x)
 }
 
+#' @keywords internal
 .vigenere_encrypt <- function(x, key, square, keep_punctuation) {
   x <- lapply(x, function(x) {
     x <- unlist(strsplit(x, ""))
@@ -85,6 +86,7 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
   return(x)
 }
 
+#' @keywords internal
 .vigenere_decrypt <- function(x, key, square, keep_punctuation) {
   x <- lapply(x, function(x) {
     x <- unlist(strsplit(x, ""))
@@ -113,12 +115,14 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
   return(x)
 }
 
+#' @keywords internal
 .get_letter <- function(y) {
   y <- which(letters == y)
   if (length(y) == 0) { return(0) }
   else { return(y) }
 }
 
+#' @keywords internal
 .rep_key <- function(x, key) {
   rep_key <- c()
   k <- 1
