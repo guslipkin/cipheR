@@ -12,7 +12,8 @@ railfence(x, n = 1, decrypt = FALSE)
 \item{n}{(Default: \code{1}) The width of the rail to be used. A width of one will
 have no effect.}
 
-\item{decrypt}{This is not implemented yet}
+\item{decrypt}{(Default: \code{FALSE}) The default \code{FALSE} will encrypt while
+using \code{TRUE} will decrypt a given value of \code{x}.}
 }
 \value{
 A character vector of length one that has been transformed
@@ -20,6 +21,5 @@ A character vector of length one that has been transformed
 \description{
 This can be used to create (encrypt) and solve (decrypt) a
 Railfence Cipher. A Railfence Cipher maps each letter to a cosine wave of
-the specified height where each letter resides at a specified rail height.
-The function does not differentiate between the encryption and decryption.
+the specified height where each letter resides at an integer rail height.
 }

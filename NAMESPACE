@@ -3,3 +3,4 @@
 export(atbash)
 export(caesar)
 export(railfence)
+export(vigenere)
