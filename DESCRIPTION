@@ -1,5 +1,5 @@
 Package: cipheR
-Title: Encryption and Decryption With Text Ciphers
+Title: Encryption and Decryption with Text Ciphers
 Version: 1.0.0
 Authors@R: 
     person("Gus", "Lipkin", , "gus.lipkin@gmail.com", role = c("aut", "cre"))
