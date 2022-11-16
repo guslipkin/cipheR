@@ -28,4 +28,7 @@ caesar shifts for one to twenty-six. The key is made to have an equal
 length to the text by adding the first letters of the text to the key. Each
 letter and corresponding key value determine the grid location to choose
 the obfuscated letter from.
+
+The Running Key Cipher Wikipedia entry provides more information on the
+methods used: \url{https://en.wikipedia.org/wiki/Running_key_cipher}
 }

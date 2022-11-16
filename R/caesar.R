@@ -5,6 +5,9 @@
 #' @description This can be used to create (encrypt) and solve (decrypt) a
 #'   Caesar cipher. The function does not differentiate between the two.
 #'
+#'   The Caesar Cipher Wikipedia entry provides more information on the methods
+#'   used: [https://en.wikipedia.org/wiki/Caesar_cipher](https://en.wikipedia.org/wiki/Caesar_cipher)
+#'
 #' @param x A vector to be shifted
 #' @param n (Default: `1`) The number of places to shift by. This can be either
 #'   positive or negative. Zero returns x as it was given to the function.

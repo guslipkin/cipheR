@@ -17,4 +17,7 @@ This can be used to create (encrypt) and solve (decrypt) an
 Atbash Cipher. An Atbash Cipher swaps letters' places in the alphabet.
 Thus, 'a' becomes 'z', 'b' becomes 'y', and so on. The function does not
 differentiate between the two.
+
+The Atbash Cipher Wikipedia entry provides more information on the methods
+used: \url{https://en.wikipedia.org/wiki/Atbash}
 }

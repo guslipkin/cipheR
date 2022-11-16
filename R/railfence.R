@@ -6,6 +6,9 @@
 #'   Railfence Cipher. A Railfence Cipher maps each letter to a cosine wave of
 #'   the specified height where each letter resides at an integer rail height.
 #'
+#'   The Railfence Cipher Wikipedia entry provides more information on the methods
+#'   used: [https://en.wikipedia.org/wiki/Rail_fence_cipher](https://en.wikipedia.org/wiki/Rail_fence_cipher)
+#'
 #' @param x A vector to be encoded or decoded.
 #' @param n (Default: `1`) The width of the rail to be used. A width of one will
 #'   have no effect.

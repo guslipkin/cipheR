@@ -26,4 +26,7 @@ This can be used to create (encrypt) and solve (decrypt) a
 Vigenere Cipher. A Vigenere cipher uses a table of alphabetic caesar shifts
 for one to twenty-six. Each letter and corresponding key value determine
 the grid location to choose the obfuscated letter from.
+
+The Vigenere Cipher Wikipedia entry provides more information on the methods
+used: \url{https://en.wikipedia.org/wiki/Vigen\%C3\%A8re_cipher}
 }

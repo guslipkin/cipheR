@@ -4,7 +4,9 @@ Version: 1.0.0
 Authors@R: 
     person("Gus", "Lipkin", , "gus.lipkin@gmail.com", role = c("aut", "cre"))
 Description: Encrypts and decrypts using basic ciphers. None of 
-  these should be used in place of real encryption using state of the art tools.
+  these should be used in place of real encryption using state of the art tools. 
+  The ciphers included use methods described in the ciphers's Wikipedia and 
+  cryptography hobby websites.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

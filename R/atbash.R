@@ -7,6 +7,9 @@
 #'   Thus, 'a' becomes 'z', 'b' becomes 'y', and so on. The function does not
 #'   differentiate between the two.
 #'
+#'   The Atbash Cipher Wikipedia entry provides more information on the methods
+#'   used: [https://en.wikipedia.org/wiki/Atbash](https://en.wikipedia.org/wiki/Atbash)
+#'
 #' @param x A vector to be encoded or decoded.
 #'
 #' @returns A character vector of length one that has been transformed

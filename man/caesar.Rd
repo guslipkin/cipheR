@@ -41,4 +41,7 @@ A character vector of length one that has been shifted.
 \description{
 This can be used to create (encrypt) and solve (decrypt) a
 Caesar cipher. The function does not differentiate between the two.
+
+The Caesar Cipher Wikipedia entry provides more information on the methods
+used: \url{https://en.wikipedia.org/wiki/Caesar_cipher}
 }

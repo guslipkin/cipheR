@@ -22,4 +22,7 @@ A character vector of length one that has been transformed
 This can be used to create (encrypt) and solve (decrypt) a
 Railfence Cipher. A Railfence Cipher maps each letter to a cosine wave of
 the specified height where each letter resides at an integer rail height.
+
+The Railfence Cipher Wikipedia entry provides more information on the methods
+used: \url{https://en.wikipedia.org/wiki/Rail_fence_cipher}
 }

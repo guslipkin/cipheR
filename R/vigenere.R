@@ -7,6 +7,9 @@
 #'   for one to twenty-six. Each letter and corresponding key value determine
 #'   the grid location to choose the obfuscated letter from.
 #'
+#'   The Vigenere Cipher Wikipedia entry provides more information on the methods
+#'   used: [https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher)
+#'
 #' @param x A vector to be encoded or decoded.
 #' @param key A character vector of length one to use as a key
 #' @param decrypt (Default: `FALSE`) The default `FALSE` will encrypt while
