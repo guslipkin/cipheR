@@ -45,7 +45,7 @@ caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
   }
 
   if (n == 0) {
-    warning("Shifting by zero doesn't do anything...")
+    message("Shifting by zero doesn't do anything...")
     return(x)
   }
 

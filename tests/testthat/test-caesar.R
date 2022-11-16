@@ -1,5 +1,5 @@
 test_that("Shift 0 warns and works", {
-  expect_warning(caesar("abcde", 0))
+  expect_message(caesar("abcde", 0))
   expect_equal(caesar("abcde", 0), "abcde")
 })
 test_that("Shift 1 works", {

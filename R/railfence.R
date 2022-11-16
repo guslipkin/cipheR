@@ -24,7 +24,7 @@ railfence <- function(x, n = 1, decrypt = FALSE) {
     stop("x must be a character vector.")
   }
 
-  if (length(n) != 1 | n < 1 | n %% 1 != 0) {
+  if (length(n) != 1 || n < 1 || n %% 1 != 0) {
     stop("n must be a single integer greater than or equal to 1")
   }
 
