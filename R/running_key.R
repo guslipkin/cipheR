@@ -4,7 +4,7 @@
 #'
 #' @description This can be used to create (encrypt) and solve (decrypt) a
 #'   Running Key Vigenere Cipher. A Vigenere cipher uses a table of alphabetic
-#'   caesar shifts for one to twenty-six. The key is made to have an equal
+#'   Caesar shifts for one to twenty-six. The key is made to have an equal
 #'   length to the text by adding the first letters of the text to the key. Each
 #'   letter and corresponding key value determine the grid location to choose
 #'   the obfuscated letter from.
@@ -21,6 +21,16 @@
 #'   input's case and punctuation.
 #'
 #' @returns A character vector of length equal to x that has been transformed
+#' @examples
+#' key <- "thisismysupersecurekey"
+#' (e1 <- running_key("abcde", key))
+#' running_key(e1, key, decrypt = TRUE)
+#'
+#' (e2 <- running_key("cipheR is a great R package!", key))
+#' running_key(e2, key, decrypt = TRUE)
+#'
+#' (e3 <- running_key("Isn't this fun?", key, keep_punctuation = TRUE))
+#' running_key(e3, key, decrypt = TRUE, keep_punctuation = TRUE)
 running_key <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
   if (length(x) != 1) {
     stop("Please provide a vector of length one for x")
@@ -34,12 +44,14 @@ running_key <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
     stop("key must be a character vector.")
   }
 
+  # split character vectors
   y <- unlist(strsplit(x, ""))
   y <- y[grepl("[A-z]", y)]
 
   k <- unlist(strsplit(key, ""))
   k <- k[grepl("[A-z]", k)]
 
+  # make vigenere do the work since they're closely related
   if(length(k) >= length(y)) {
     x <- vigenere(x, paste0(k, collapse = ""), decrypt = decrypt, keep_punctuation = keep_punctuation)
     return(x)

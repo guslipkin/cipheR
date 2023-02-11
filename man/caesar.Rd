@@ -45,3 +45,13 @@ Caesar cipher. The function does not differentiate between the two.
 The Caesar Cipher Wikipedia entry provides more information on the methods
 used: \url{https://en.wikipedia.org/wiki/Caesar_cipher}
 }
+\examples{
+(e1 <- caesar("abcde", 1))
+caesar(e1, -1)
+
+(e2 <- caesar("cipheR is a great R package!", -5))
+caesar(e2, 5)
+
+(e3 <- caesar("Isn't this fun?", 2, preserve_spaces = FALSE))
+caesar(e3, -2, preserve_spaces = FALSE)
+}

@@ -21,3 +21,13 @@ differentiate between the two.
 The Atbash Cipher Wikipedia entry provides more information on the methods
 used: \url{https://en.wikipedia.org/wiki/Atbash}
 }
+\examples{
+(e1 <- atbash("abcde"))
+atbash(e1)
+
+(e2 <- atbash("cipheR is a great R package!"))
+atbash(e2)
+
+(e3 <- atbash("Isn't this fun?"))
+atbash(e3)
+}

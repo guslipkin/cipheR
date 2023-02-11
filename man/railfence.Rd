@@ -26,3 +26,13 @@ the specified height where each letter resides at an integer rail height.
 The Railfence Cipher Wikipedia entry provides more information on the methods
 used: \url{https://en.wikipedia.org/wiki/Rail_fence_cipher}
 }
+\examples{
+(e1 <- railfence("abcde", 2))
+railfence(e1, 2, decrypt = TRUE)
+
+(e2 <- railfence("cipheR is a great R package!", 4))
+railfence(e2, 4, decrypt = TRUE)
+
+(e3 <- railfence("Isn't this fun?", 3))
+railfence(e3, 3, decrypt = TRUE)
+}

@@ -23,10 +23,20 @@ A character vector of length equal to x that has been transformed
 }
 \description{
 This can be used to create (encrypt) and solve (decrypt) a
-Vigenere Cipher. A Vigenere cipher uses a table of alphabetic caesar shifts
+Vigenere Cipher. A Vigenere cipher uses a table of alphabetic Caesar shifts
 for one to twenty-six. Each letter and corresponding key value determine
 the grid location to choose the obfuscated letter from.
 
 The Vigenere Cipher Wikipedia entry provides more information on the methods
 used: \url{https://en.wikipedia.org/wiki/Vigen\%C3\%A8re_cipher}
+}
+\examples{
+(e1 <- vigenere("abcde", "key"))
+vigenere(e1, "key", decrypt = TRUE)
+
+(e2 <- vigenere("cipheR is a great R package!", "key"))
+vigenere(e2, "key", decrypt = TRUE)
+
+(e3 <- vigenere("Isn't this fun?", "key", keep_punctuation = TRUE))
+vigenere(e3, "key", decrypt = TRUE, keep_punctuation = TRUE)
 }

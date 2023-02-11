@@ -3,7 +3,7 @@
 #' @export
 #'
 #' @description This can be used to create (encrypt) and solve (decrypt) a
-#'   Vigenere Cipher. A Vigenere cipher uses a table of alphabetic caesar shifts
+#'   Vigenere Cipher. A Vigenere cipher uses a table of alphabetic Caesar shifts
 #'   for one to twenty-six. Each letter and corresponding key value determine
 #'   the grid location to choose the obfuscated letter from.
 #'
@@ -19,6 +19,15 @@
 #'   input's case and punctuation.
 #'
 #' @returns A character vector of length equal to x that has been transformed
+#' @examples
+#' (e1 <- vigenere("abcde", "key"))
+#' vigenere(e1, "key", decrypt = TRUE)
+#'
+#' (e2 <- vigenere("cipheR is a great R package!", "key"))
+#' vigenere(e2, "key", decrypt = TRUE)
+#'
+#' (e3 <- vigenere("Isn't this fun?", "key", keep_punctuation = TRUE))
+#' vigenere(e3, "key", decrypt = TRUE, keep_punctuation = TRUE)
 vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
 
   if (length(x) == 0) {
@@ -40,13 +49,15 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
     stop("decrypt must be logical")
   }
 
+  # make a square of every letter combination
   square <-
-    suppressWarnings(matrix(sapply(0:25, function(x) {
+    suppressMessages(matrix(sapply(0:25, function(x) {
       caesar(letters, x)
     }), 26, 26))
 
   key <- tolower(key)
 
+  # dispatch the encryption or decryption method
   if (!decrypt) {
     x <- .vigenere_encrypt(x, key, square, keep_punctuation)
   } else {
@@ -61,27 +72,32 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
   x <- lapply(x, function(x) {
     x <- unlist(strsplit(x, ""))
 
+    # track case if desired
     if (!keep_punctuation) { x <- x[grepl("[A-z]", x)] }
     lowerX <- tolower(x)
 
+    # repeat the key so it matches the length of the input
     key <- unlist(strsplit(key, ""))
     key <- .rep_key(x, key)
 
+    # get the row and column positions for the letters
     r <- sapply(key, .get_letter)
     c <- sapply(lowerX, .get_letter)
 
+    # use r and c to get the desired letters
     x <- sapply(1:length(x), function(i) {
       if (c[i] == 0) {
         y <- x[i]
-        print(y)
       } else {
         y <- square[r[i], c[i]]
       }
 
+      # make sure punctuation is preserved if desired
       if (keep_punctuation & grepl("[A-Z]", x[i])) { return(toupper(y)) }
       else { return(y) }
     })
 
+    # collapse individual characters back into a string
     x <- paste0(x, collapse = "")
     return(x)
   })
@@ -94,14 +110,18 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
   x <- lapply(x, function(x) {
     x <- unlist(strsplit(x, ""))
 
+    # track case if desired
     if (!keep_punctuation) { x <- x[grepl("[A-z]", x)] }
     lowerX <- tolower(x)
 
+    # repeat the key so it matches the length of the input
     key <- unlist(strsplit(key, ""))
     key <- .rep_key(x, key)
 
+    # get each letter's position
     r <- sapply(key, .get_letter)
 
+    # grab the letter from the square and match punctuation
     x <- mapply(function(r, x, lowerX) {
       i <- square[1, which(square[r, ] == lowerX)]
 
@@ -110,6 +130,7 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
       return(i)
     }, r, x, lowerX)
 
+    # collapse individual characters back into a string
     x <- paste0(x, collapse = "")
 
     return(x)
@@ -120,6 +141,7 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
 
 #' @keywords internal
 .get_letter <- function(y) {
+  # returns the alphabetical position of a lowercase letter
   y <- which(letters == y)
   if (length(y) == 0) { return(0) }
   else { return(y) }
@@ -129,10 +151,12 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
 .rep_key <- function(x, key) {
   rep_key <- c()
   k <- 1
+  # for each character in x, get the next key sequence if it's a letter
   return_key <- sapply(1:length(x), function(i) {
     ki <- k %% length(key)
     if (ki == 0) { ki <- length(key) }
 
+    # if not a letter, return "" and don't increase the key index
     if (!grepl("[A-z]", x[i])) {
       rep_key <- c(rep_key, "")
     } else {

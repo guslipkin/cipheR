@@ -31,6 +31,15 @@
 #'   English alphabet.
 #'
 #' @returns A character vector of length one that has been shifted.
+#' @examples
+#' (e1 <- caesar("abcde", 1))
+#' caesar(e1, -1)
+#'
+#' (e2 <- caesar("cipheR is a great R package!", -5))
+#' caesar(e2, 5)
+#'
+#' (e3 <- caesar("Isn't this fun?", 2, preserve_spaces = FALSE))
+#' caesar(e3, -2, preserve_spaces = FALSE)
 caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL) {
 
   # Catching errors
@@ -53,6 +62,7 @@ caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
     x <- as.character(x)
   }
 
+  # x is a list of split character vectors
   x <- strsplit(x, "")
   unlistX <- unlist(x)
 
@@ -83,32 +93,33 @@ caesar <- function(x, n = 1, preserve_spaces = TRUE, dict = NULL, preset = NULL)
     stop("Not all values of x are in the character set. Please choose a different character set.")
   }
 
-  x <-
-    lapply(x, function(y) {
-      # We need to preserve spaces as requested
-      if (preserve_spaces) {
-        isSpace <- which(dict == " ")
-        if (length(isSpace > 0)) {
-          dict <- dict[-which(dict == " ")]
-        }
+  # loop over each item in the list of input vectors
+  x <- lapply(x, function(y) {
+    # We need to preserve spaces as requested
+    if (preserve_spaces) {
+      isSpace <- which(dict == " ")
+      if (length(isSpace > 0)) {
+        dict <- dict[-which(dict == " ")]
       }
+    }
 
-      # Do the shifting
-      y <-
-        sapply(y, function(z) {
-          if (preserve_spaces & z == " ") {
-            return(" ")
-          }
-          hop <- which(z == dict) + n
-          hop <- hop %% length(dict)
-          if (hop == 0) {
-            hop <- length(dict)
-          }
-          return(dict[hop])
-        })
-      y <- paste0(y, collapse = "")
-      return(y)
+    # Do the shifting for each character
+    y <- sapply(y, function(z) {
+      if (preserve_spaces & z == " ") {
+        return(" ")
+      }
+      # find the new value
+      hop <- which(z == dict) + n
+      hop <- hop %% length(dict)
+      if (hop == 0) {
+        hop <- length(dict)
+      }
+      return(dict[hop])
     })
+    # collapse individual characters back into a string
+    y <- paste0(y, collapse = "")
+    return(y)
+  })
 
   x <- unlist(x, recursive = FALSE)
 
