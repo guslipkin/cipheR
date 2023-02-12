@@ -80,27 +80,10 @@ railfence <- function(x, n = 1, decrypt = FALSE) {
     s <- unlist(strsplit(s, ""))
     # create a matrix and fill it with "*" where a character will be placed
     m <- matrix(NA, n, length(s))
-    j <- 1
-    dir <- 1
-    for (i in seq_along(s)) {
-      m[j, i] <- "*"
-
-      if (dir == 1) {
-        if (j == n) {
-          dir <- -1
-          j <- j - 1
-        } else {
-          j <- j + 1
-        }
-      } else {
-        if (j == 1) {
-          dir <- 1
-          j <- j + 1
-        } else {
-          j <- j - 1
-        }
-      }
-    }
+    seq_s <- seq_along(s)
+    dir <- rep(seq_s, each = (n-1))[seq_s] %% 2
+    fill <- cumsum(c(1, ifelse(dir == 1, n+1,n-1)))[seq_s]
+    m[fill] <- "*"
     # loop over the matrix and fill characters where "*"
     k <- 1
     for (j in 1:nrow(m)) {
