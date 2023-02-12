@@ -85,7 +85,7 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
     c <- sapply(lowerX, .get_letter)
 
     # use r and c to get the desired letters
-    x <- sapply(1:length(x), function(i) {
+    x <- sapply(seq_along(x), function(i) {
       if (c[i] == 0) {
         y <- x[i]
       } else {
@@ -152,7 +152,7 @@ vigenere <- function(x, key, decrypt = FALSE, keep_punctuation = FALSE) {
   rep_key <- c()
   k <- 1
   # for each character in x, get the next key sequence if it's a letter
-  return_key <- sapply(1:length(x), function(i) {
+  return_key <- sapply(seq_along(x), function(i) {
     ki <- k %% length(key)
     if (ki == 0) { ki <- length(key) }
 

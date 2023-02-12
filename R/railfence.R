@@ -82,7 +82,7 @@ railfence <- function(x, n = 1, decrypt = FALSE) {
     m <- matrix(NA, n, length(s))
     j <- 1
     dir <- 1
-    for (i in 1:length(s)) {
+    for (i in seq_along(s)) {
       m[j, i] <- "*"
 
       if (dir == 1) {
